@@ -315,7 +315,7 @@ class TCN(Layer):
         else:
             self.output_slice_index = -1  # causal case.
         self.slicer_layer = Lambda(lambda tt: tt[:, self.output_slice_index, :], name='Slice_Output')
-        self.slicer_layer.build(self.build_output_shape.as_list())
+        self.slicer_layer.build(list(self.build_output_shape))
 
     def compute_output_shape(self, input_shape):
         """
